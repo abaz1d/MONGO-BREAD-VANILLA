@@ -15,68 +15,151 @@
 </head>
 
 <body>
-  
+
   <div class="container mt-3">
     <div class="card">
       <div class="card-header text-center">
         <h1>BREAD (Browse, Read, Edit, Add, Delete)</h1>
       </div>
+
       <div class="card-body">
-        <form onsubmit="return saveData(event)">
+        <table class="table table-striped">
+          <tr>
 
-          <div class="row mb-3">
-            <label for="string" class="form-check-label col-sm-2">String</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="string" placeholder="Tulis String">
-            </div>
-          </div>
+            <th>
+              <div class="card-header text-center">
+                <h2>Tambah/Edit Data</h2>
+              </div>
+              <br>
+              <div>
+                <form onsubmit="return saveData(event)">
 
-          <div class="row mb-3">
-            <label for="integer" class="form-check-label col-sm-2">Integer</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="integer" placeholder="Tulis Integer">
-            </div>
-          </div>
+                  <div class="row mb-3">
+                    <label for="string" class="col-sm-2 col-form-label">String</label>
+                    <div class="col-sm-10">
+                      <input type="string" id="string" class="form-control" name='string' required>
+                    </div>
+                  </div>
 
-          <div class="row mb-3">
-            <label for="float" class="form-check-label col-sm-2">Float</label>
-            <div class="col-sm-10">
-              <input type="text" class="form-control" name="float" placeholder="Tulis Float">
-            </div>
-          </div>
+                  <div class="row mb-3">
+                    <label for="integer" class="col-sm-2 col-form-label">Integer</label>
+                    <div class="col-sm-10">
+                      <input type="number" class="form-control" id="integer" name='integer' required>
+                    </div>
+                  </div>
 
-          <div class="row mb-3">
-            <label for="date" class="form-check-label col-sm-2" for="date">Date</label>
-            <div class="col-sm-2">
-              <input type="date" name="startDate" class="form-control" placeholder="Tulis Date">
-              <label class="col-sm-2 col-form-label">to</label>
-              <input type="date" name="endDate" class="form-control" placeholder="Tulis Date">
-            </div>
-          </div>
+                  <div class="row mb-3">
+                    <label for="float" class="col-sm-2 col-form-label">Float</label>
+                    <div class="col-sm-10">
+                      <input type="number" step="0.005" class="form-control" id="float" name='float' required>
+                    </div>
+                  </div>
 
-          <div class="row mb-3">
-            <label for="boolean" class="form-check-label col-sm-2">Boolean</label>
-            <div class="col-sm-10">
-              <select id="boolean" name="boolean" class="form-select">
-                <option value="" disabled selected>--Choose Boolean--</option>
-                <option value=1>True</option>
-                <option value=0>False</option>
-              </select>
-            </div>
-          </div>
+                  <div class="row mb-3">
+                    <label for="date" class="col-sm-2 col-form-label">Date</label>
+                    <div class="col-sm-4">
+                      <input type="date" id="date" class="form-control" name='date' required>
+                    </div>
+                  </div>
 
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Save</button>
-          </div>
+                  <div class="row mb-3">
+                    <label for="boolean" class="col-sm-2 col-form-label mb-3">Boolean</label>
+                    <div class="col-sm-10">
+                      <select id="boolean" id="boolean" class="form-select" name='boolean' required>
+                        <option value="" disabled selected>--Choose Boolean--</option>
+                        <option value=True>True</option>
+                        <option value=False>False</option>
+                      </select>
+                    </div>
+                  </div>
 
-        </form>
-        <br>
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Save</button>
+
+                  </div>
+
+                </form>
+              </div>
+            </th>
+
+            <th>
+              <div class="d-flex" style="height: 500px;">
+                <div class="vr"></div>
+              </div>
+            </th>
+
+            <th>
+              <div class="card-header text-center">
+                <h2>Cari Data</h2>
+              </div>
+              <br>
+              <div>
+                <form id="form-search">
+
+                  <div class="row mb-3">
+                    <label for="searchString" class="col-sm-2 col-form-label">String</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="searchString" name="searchString" placeholder="Tulis String">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="searchInteger" class="col-sm-2 col-form-label">Integer</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="searchInteger" name="searchInteger" placeholder="Tulis Integer">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="searchFloat" class="col-sm-2 col-form-label">Float</label>
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="searchFloat" name="searchFloat" placeholder="Tulis Float">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="date" class="col-sm-2 col-form-label" id="searchDate" name="searchDate" for="searchDate">Date</label>
+                    <div class="col-sm-4">
+                      <input type="date" id="searchStartDate" name="searchStartDate" class="form-control" placeholder="Tulis Date">
+                      <label class="col-sm-4 col-form-label">to</label>
+                      <input type="date" id="searchEndDate" name="searchEndDate" class="form-control" placeholder="Tulis Date">
+                    </div>
+                  </div>
+
+                  <div class="row mb-3">
+                    <label for="boolean" class="col-sm-2 col-form-label">Boolean</label>
+                    <div class="col-sm-10">
+                      <select id="boolean" id="searchBoolean" name="searchBoolean" name="searchBoolean" class="form-select">
+                        <option value="" disabled selected>--Choose Boolean--</option>
+                        <option value=True>True</option>
+                        <option value=False>False</option>
+                      </select>
+                    </div>
+                  </div>
+
+
+                  <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">Cari</button>
+
+                    <a href="/" class="btn btn-warning">Reset</a>
+                  </div>
+
+                </form>
+              </div>
+            </th>
+
+          </tr>
+        </table>
       </div>
 
+      <div class="card-header text-center border ">
+        <h3><strong>RESULT</strong></h3>
+      </div>
 
       <table class="table table-striped">
 
-        <thead> 
+        <thead>
           <tr>
             <th>ID</th>
             <th>String</th>
@@ -84,33 +167,20 @@
             <th>Float</th>
             <th>Date</th>
             <th>Boolean</th>
-            <th  class="text-center">Actions</th>
+            <th class="text-center">Actions</th>
           </tr>
         </thead>
         <tbody id="body-users">
 
         </tbody>
       </table>
+
       <div class="card-footer">
         <div class="row">
 
           <div class="col-md-10">
-            <nav aria-label="...">
-              <ul class="pagination">
+            <nav aria-label="Page navigation" id="pagination">
 
-                <li class="page-item">
-                    <a class="page-link" href="">Previous</a>
-                </li>
-
-                  <li class="page-item" aria-current="page">
-                    <a class="page-link" href="">1</a>
-                  </li>
-
-
-                    <li class="page-item">
-                        <a class="page-link" href="">Next</a>
-                    </li>
-              </ul>
             </nav>
           </div>
 
@@ -120,14 +190,20 @@
   </div>
 
   <script>
-
     let idEdit = null;
+    var params = {
+      display: 3,
+      page: 1
+    }
+
     const readData = () => {
       fetch('http://localhost:3000/users')
         .then((response) => response.json())
-        .then((data) => {
+        .then((response) => {
+          params = { ...params, totalPages: response.totalPages }
           let html = ''
-          data.forEach((item, index) => {
+          let offset = (parseInt(params.page) - 1) * params.display
+          response.data.forEach((item, index) => {
             html += `
             <tr>
               <td>${item._id}</td>
@@ -146,6 +222,7 @@
             `
           })
           document.getElementById('body-users').innerHTML = html
+          pagination()
         });
     }
 
@@ -156,7 +233,7 @@
       const float = document.getElementById('float').value
       const date = document.getElementById('date').value
       const boolean = document.getElementById('boolean').value
-
+      console.log(string, integer, float, date, boolean)
 
       if (idEdit == null) {
         fetch('http://localhost:3000/users', {
@@ -164,7 +241,7 @@
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ name, address })
+          body: JSON.stringify({ string, integer, float, date, boolean })
         }).then((response) => response.json()).then((data) => {
           readData()
         })
@@ -174,14 +251,18 @@
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify({ name, address })
+          body: JSON.stringify({ string, integer, float, date, boolean })
         }).then((response) => response.json()).then((data) => {
           readData()
         })
         idEdit = null;
       }
-      document.getElementById('name').value = ''
-      document.getElementById('address').value = ''
+
+      document.getElementById('string').value = ''
+      document.getElementById('integer').value = ''
+      document.getElementById('float').value = ''
+      document.getElementById('date').value = ''
+      document.getElementById('boolean').value = ''
       return false
     }
 
@@ -198,9 +279,57 @@
 
     const editData = (user) => {
       idEdit = user._id
-      document.getElementById('name').value = user.name
-      document.getElementById('address').value = user.address
+      document.getElementById('string').value = user.string
+      document.getElementById('integer').value = user.integer
+      document.getElementById('float').value = user.float
+      document.getElementById('date').value = user.date
+      document.getElementById('boolean').value = user.boolean
     }
+
+    const pagination = () => {
+
+      let pagination = `<ul class="pagination">
+                               <li class="page-item${params.page == 1 ? ' disabled' : ''}">
+                                 <a class="page-link" href="#" datapage="${parseInt(params.page) - 1}" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                    </a>
+                                </li>`
+      for (let i = 1; i <= params.totalPages; i++) {
+        pagination += `<li class="page-item${i == params.page ? ' active' : ''}"><a class="page-link" href="#" datapage="${i}">${i}</a></li>`
+      }
+      pagination += `<li class="page-item${params.page == params.totalPages ? ' disabled' : ''}">
+            <a class="page-link" datapage="${parseInt(params.page) + 1}" href="#" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>`
+      //$('#pagination').html(pagination)
+      document.getElementById('pagination').innerHTML = pagination
+
+    }
+
+    console.log(params)
+
+    // document.querySelector('.page-link').onclick = function (e) {
+    //   e.preventDefault()
+    //   params = { ...params, page: parseInt('datapage') }
+    //   readData()
+    //   return false
+    // }
+    // //console.log(params)
+
+ document.getElementById('form-search').addEventListener('submit', function (event){
+      event.preventDefault()
+      const string = document.getElementById('searchString').value
+      const integer = document.getElementById('searchInteger').value
+      const float = document.getElementById('searchFloat').value
+      const date = document.getElementById('searchDate').value
+      const boolean = document.getElementById('searchBoolean').value
+      params = { ...params, string, integer, float, date, boolean }
+
+      //document.querySelector('form-search').submit = params
+      //readData({string, integer, float, date, boolean})
+    })
 
     readData()
   </script>
