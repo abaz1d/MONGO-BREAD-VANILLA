@@ -44,7 +44,7 @@ module.exports = function (db) {
 //======   
 
     if (req.query.boolean) {
-      wheres['boolean'] = JSON.parse(req.query.boolean)
+      wheres['boolean'] = (req.query.boolean)
     }
 
     
