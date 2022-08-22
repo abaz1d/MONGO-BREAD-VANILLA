@@ -73,18 +73,19 @@ module.exports = function (db) {
   router.post('/', async function (req, res, next) {
     try {
       const collection = db.collection('users');
-      const insertResult = await collection.insertOne({ string: req.body.string, integer: req.body.integer, float: req.body.float, date: req.body.date, boolean: req.body.boolean });
+      const insertResult = await collection.insertOne({ string: req.body.string, integer: parseInt(req.body.integer), float: JSON.parse(req.body.float), date: new Date(req.body.date), boolean: req.body.boolean });
       res.status(201).json(insertResult)
     } catch (e) {
       res.json(e)
     }
   });
 
+
   //PUT, EDIT USERS
   router.put('/:id', async function (req, res, next) {
     try {
       const collection = db.collection('users');
-      const updateResult = await collection.updateOne({ _id: ObjectId(req.params.id) }, { $set: { string: req.body.string, integer: req.body.integer, float: req.body.float, date: req.body.date, boolean: req.body.boolean } });
+      const updateResult = await collection.updateOne({ _id: ObjectId(req.params.id) }, { $set: { string: req.body.string, integer: parseInt(req.body.integer), float: JSON.parse(req.body.float), date: new Date(req.body.date), boolean: req.body.boolean } });
       res.status(201).json(updateResult)
     } catch (e) {
       res.json(e)
